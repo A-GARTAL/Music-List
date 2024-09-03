@@ -1,0 +1,133 @@
+:root {
+  --main_color: #212121;
+  --main_color_25: rgba(33, 33, 33, 0.25);
+  --sub_color:  #FAFAFA;
+  --sub_color_25: rgb(250, 250, 250, 0.25);
+  --main_radius: 12px;
+  --sub_radius: 8px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main_color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.3s;
+  font-family: 'Rubik';
+  color: var(--sub_color);
+}
+
+.main_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  
+}
+
+.header {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 2rem;
+}
+
+.musics_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 10px;
+  border: 2px solid var(--sub_color_25);
+  border-radius: var(--sub_radius);
+}
+
+.track_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 20vw;
+  min-width: 100px;
+  min-height: 100px;
+  border: 2px solid var(--main_color);
+  padding: 5px;
+  border-radius: var(--main_radius);
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.track_container:hover {
+  transform: scale(105%);
+  border: 2px solid var(--sub_color);
+}
+
+.track_container:hover .track_info{
+  opacity: 1;
+  animation: 0.3s popup_info linear;
+  bottom: 4px;
+}
+
+.music_img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--sub_radius);
+  box-shadow: 0 0 20px 5px solid var(--sub_color);
+  border: 2px solid var(--sub_color);
+}
+
+.track_info {
+  color: black;
+  position: absolute;
+  background-color: var(--sub_color_25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 5px;
+  right: 5px;
+  bottom: -120px;
+  height: 7vh;
+  backdrop-filter: blur(10px);
+  border-bottom-left-radius: var(--sub_radius);
+  border-bottom-right-radius: var(--sub_radius);
+  font-size: 2.5vh;
+  opacity: 0;
+
+}
+
+@keyframes popup_info {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+}
+
+.fullSize {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  inset: 0;
+}
+
+.audio_elem {
+  display: none;
+  width: 100%;
+}
